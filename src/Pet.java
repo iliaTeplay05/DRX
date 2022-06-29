@@ -1,10 +1,10 @@
 public class Pet {
-    int theNeedForFood;
-    int theNeedForWater;
-    int theNeedForSleep;
-    int theNeedForHygiene;
-    int theNeedForTreatment;
-    boolean life;
+    private int theNeedForFood;
+    private int theNeedForWater;
+    private int theNeedForSleep;
+    private int theNeedForHygiene;
+    private int theNeedForTreatment;
+    private boolean life;
 
     public Pet(int theNeedForFood, int theNeedForWater, int theNeedForSleep, int theNeedForHygiene, int theNeedForTreatment) {
         this.theNeedForFood = theNeedForFood;
@@ -12,7 +12,11 @@ public class Pet {
         this.theNeedForSleep = theNeedForSleep;
         this.theNeedForHygiene = theNeedForHygiene;
         this.theNeedForTreatment = theNeedForTreatment;
-        this.life = life;
+        this.life = true;
+    }
+
+    public boolean isLife() {
+        return life;
     }
 
     public int getTheNeedForFood() {
@@ -29,7 +33,7 @@ public class Pet {
             System.out.println("Желудок вашего питомца сколлапсировал в черную дыру и он умер.");
             System.out.println("GAME OVER");
         } else {
-            this.theNeedForFood = theNeedForFood + editNeed;
+            theNeedForFood = theNeedForFood + editNeed;
         }
     }
 
@@ -47,7 +51,7 @@ public class Pet {
             System.out.println("Ваш питомец засох. Теперь у вас есть его мумия.");
             System.out.println("GAME OVER");
         } else {
-            this.theNeedForWater = theNeedForWater + editNeed;
+            theNeedForWater = theNeedForWater + editNeed;
         }
     }
 
@@ -63,7 +67,7 @@ public class Pet {
             System.out.println("У вашего питомца были проблемы с сердцем. Он долго не спал, ожидая вашей команды, и умер.");
             System.out.println("GAME OVER");
         } else {
-            this.theNeedForSleep = theNeedForSleep + editNeed;
+            theNeedForSleep = theNeedForSleep + editNeed;
         }
     }
 
@@ -81,7 +85,7 @@ public class Pet {
             System.out.println("Из-за антисанитарии в шерсти питомца завелась челябинская блоха и он умер.");
             System.out.println("GAME OVER");
         } else {
-            this.theNeedForHygiene = theNeedForHygiene + editNeed;
+            theNeedForHygiene = theNeedForHygiene + editNeed;
         }
     }
 
@@ -99,8 +103,16 @@ public class Pet {
             System.out.println("Ваш питомец умер без вашей помощи. В последнее время он выглядел вылям. Возможно он чем-то болел.");
             System.out.println("GAME OVER");
         } else {
-            this.theNeedForTreatment = theNeedForTreatment + editNeed;
+            theNeedForTreatment = theNeedForTreatment + editNeed;
         }
+    }
+
+    public void printlnCharacteristics() {
+        System.out.println("Сытость: " + theNeedForFood);
+        System.out.println("Гидрация: " + theNeedForWater);
+        System.out.println("Бодрость: " + theNeedForSleep);
+        System.out.println("Гигиена: " + theNeedForHygiene);
+        System.out.println("Здоровье: " + theNeedForTreatment);
     }
 }
 
