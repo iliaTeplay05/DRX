@@ -1,10 +1,13 @@
+import java.net.ServerSocket;
+import java.util.Scanner;
+
 public class Pet {
     private int theNeedForFood;
     private int theNeedForWater;
     private int theNeedForSleep;
     private int theNeedForHygiene;
     private int theNeedForTreatment;
-    private boolean life;
+    private boolean life = true;
 
     public Pet(int theNeedForFood, int theNeedForWater, int theNeedForSleep, int theNeedForHygiene, int theNeedForTreatment) {
         this.theNeedForFood = theNeedForFood;
@@ -107,12 +110,57 @@ public class Pet {
         }
     }
 
+    public void squanderTime() {
+        setTheNeedForFood(-10);
+        setTheNeedForWater(-20);
+        setTheNeedForSleep(-5);
+        setTheNeedForHygiene(-15);
+        setTheNeedForTreatment(-5);
+    }
+
     public void printlnCharacteristics() {
         System.out.println("Сытость: " + theNeedForFood);
         System.out.println("Гидрация: " + theNeedForWater);
         System.out.println("Бодрость: " + theNeedForSleep);
         System.out.println("Гигиена: " + theNeedForHygiene);
         System.out.println("Здоровье: " + theNeedForTreatment);
+    }
+
+    public void printlnMenu() {
+        System.out.println("-".repeat(15));
+        System.out.println("1. Покормить");
+        System.out.println("2. Попоить");
+        System.out.println("3. Уложить спать");
+        System.out.println("4. Помыть");
+        System.out.println("5. Полечить");
+        System.out.println("6. Ждать");
+        System.out.println("0. Выйти из игры");
+    }
+
+    static int inputInt(String message, int min, int max) {
+        boolean isValidInput;
+        int output = 0;
+        do {
+            try {
+                isValidInput = true;
+                Scanner scanner = new Scanner (System.in);
+
+                System.out.print(message);
+                output = scanner.nextInt();
+
+                if (output < min || output > max) {
+                    System.out.println("Ошибка ввода. Вы вышли за границы диапазона от " + min + " до " + max);
+                    throw new Exception();
+                }
+
+            } catch (Exception e) {
+                isValidInput = false;
+                System.out.println("Ошибка ввода. Пожалуйста повторите ввод");
+            }
+
+        } while (isValidInput == false);
+
+        return output;
     }
 }
 
